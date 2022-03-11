@@ -17,7 +17,9 @@ const Item = () => {
 		window.location.href = '/';
 	}
 
-	const handdlePagarMP = () => {
+	const handdlePagarMP = async (btn: any) => {
+		//disable btn
+		btn.target.disabled = true;
 		// const PORT = 8080;
 		// const APIURL = `http:///localhost:${PORT}/api/`;
 		const APIURL = `https://checkout-mp-react.herokuapp.com/api/`;
@@ -25,7 +27,7 @@ const Item = () => {
 		let mercadopago: any = null;
 		try {
 			//@ts-ignore
-			mercadopago = new MercadoPago(PUBLIC_KEY, {
+			mercadopago = await new MercadoPago(PUBLIC_KEY, {
 				locale: 'es-CL',
 			});
 		} catch (error) {}
@@ -42,8 +44,8 @@ const Item = () => {
 						payer: {
 							name: 'Lalo',
 							surname: 'Landa',
-							// email: 'test_user_63274575@testuser.com', //EMAIL EXAMEN NOT FOUND
-							email: 'test_user_51992233@testuser.com',
+							email: 'test_user_63274575@testuser.com', ////EMAIL EXAMEN NOT FOUND
+							// email: 'test_user_51992233@testuser.com',
 							phone: {
 								area_code: '11',
 								number: 22223333,
@@ -75,6 +77,16 @@ const Item = () => {
 						autoOpen: true,
 					});
 
+					//esto es para limpiar el iframe que genera el script de mercado libre.
+					let iframe = document.body.querySelector(
+						'iframe[src*="mercadolibre"]'
+					);
+					if (iframe) {
+						document.body.removeChild(iframe);
+					}
+					setTimeout(() => {
+						btn.target.disabled = false;
+					}, 5000);
 					return id;
 				} catch (error) {
 					console.log(error);
@@ -123,7 +135,6 @@ const Item = () => {
 								<button className="item__pagar-btn" onClick={handdlePagarMP}>
 									Pagar la compra
 								</button>
-								<button id="button-checkout" className="BTNINVISIBLE" />
 							</div>
 						</div>
 					</div>

@@ -35,7 +35,7 @@
 
 .item {
 	margin: 10px 7vw;
-    min-height: 40vh;
+	min-height: 40vh;
 	&__container {
 		display: flex;
 		justify-content: center;
@@ -103,6 +103,11 @@
 		&:hover {
 			background: #fff;
 			color: #00a8ff;
+		}
+		&:disabled {
+			background: #ccc;
+			color: #fff;
+			cursor: not-allowed;
 		}
 	}
 }
