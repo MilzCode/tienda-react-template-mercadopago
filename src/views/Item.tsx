@@ -20,7 +20,7 @@ const Item = () => {
 	const handdlePagarMP = () => {
 		// const PORT = 8080;
 		// const APIURL = `http:///localhost:${PORT}/api/`;
-		const APIURL = `https://checkout-mp-react.herokuapp.com/`;
+		const APIURL = `https://checkout-mp-react.herokuapp.com/api/`;
 		const PUBLIC_KEY = 'TEST-efcbcded-34c5-494c-9a53-fbaa41af4f41';
 		let mercadopago: any = null;
 		try {
