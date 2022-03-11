@@ -2,8 +2,12 @@ import React from 'react';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import Producto from '../components/views/Home/Producto';
+import useScript from '../hooks/useScript';
 
 const Home = () => {
+	useScript('https://www.mercadopago.com/v2/security.js', {
+		view: 'home',
+	});
 	return (
 		<>
 			<Header />

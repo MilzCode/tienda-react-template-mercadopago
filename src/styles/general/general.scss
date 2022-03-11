@@ -7,6 +7,28 @@
 	width: 100vw;
 	height: 100vh;
 }
+.LINK {
+	color: rgba(blue, 0.7);
+	font-weight: bold;
+	font-style: italic;
+
+	&:hover {
+		color: blue;
+		text-decoration: underline;
+	}
+}
+.BTNINVISIBLE {
+	outline: none !important;
+	border: none !important;
+	background-color: transparent !important;
+	width: 0 !important;
+	height: 0 !important;
+	&:focus {
+		outline: none !important;
+		border: none !important;
+		background-color: transparent !important;
+	}
+}
 
 $fontFamily: 'Montserrat', sans-serif;
 $blue: #00a8ff;

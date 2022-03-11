@@ -1,0 +1,108 @@
+/* 
+<div className="item">
+						<h2>Carrito de Compra</h2>
+						<div className="item__container">
+							<div className="item__img">
+								<img src={phone.srcPath} alt={phone.title} />
+							</div>
+							<div className="item__info">
+									<div className="item__inf">
+									Nombre: <span>{phone.title}</span>
+								</div>
+								<div className="item__inf">
+									Precio: <span>{phone.price}</span>
+								</div>
+								<div className="item__inf">
+									Descripción <span>Producto de E-commerce</span>
+								</div>
+								<div className="item__inf">
+									Disponible: <span>{phone.quantity}</span>
+								</div>
+							</div>
+					
+							<div className="item__pagar">
+								<h3>Carrito</h3>
+								<div className="item__sub-total">
+									Subtotal: <span>{phone.price}</span>
+								</div>
+								<button className="item__pagar-btn">Pagar la compra</button>
+							</div>
+						</div>
+					</div>
+
+
+*/
+
+.item {
+	margin: 10px 7vw;
+    min-height: 40vh;
+	&__container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	&__img {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		& img {
+			max-height: 300px;
+			margin: 20px 0;
+			padding: 20px;
+			max-width: 100%;
+			border-radius: 17%;
+		}
+	}
+	&__info {
+		margin-right: 7vw;
+		margin-bottom: 20px;
+	}
+	&__inf {
+		font-weight: 700;
+		line-height: 1.7;
+		& span {
+			font-weight: 400;
+			font-size: 1.2em;
+		}
+	}
+	&__pagar {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		background-color: rgba(#00a8ff, 0.03);
+		border-radius: 10px;
+		//shadow
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		padding: 30px max(7vw, 50px);
+		& h3 {
+			font-size: 2.5rem;
+			margin: 0;
+		}
+	}
+	&__sub-total {
+		font-weight: 700;
+		line-height: 2;
+		font-size: 1.7rem;
+		& span {
+			font-weight: 400;
+			font-size: 1.2em;
+		}
+	}
+	&__pagar-btn {
+		background: #00a8ff;
+		color: #fff;
+		border: none;
+		padding: 10px 17px;
+		border-radius: 5px;
+		font-size: 0.9em;
+		font-weight: 700;
+		cursor: pointer;
+		transition: all 0.3s ease-in-out;
+		&:hover {
+			background: #fff;
+			color: #00a8ff;
+		}
+	}
+}
