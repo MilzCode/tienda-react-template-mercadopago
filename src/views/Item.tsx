@@ -32,6 +32,7 @@ const Item = () => {
 			});
 		} catch (error) {}
 		if (mercadopago) {
+			const current_domain = window.location.hostname;
 			const getIdPreferences = async () => {
 				try {
 					const orderData = {
@@ -39,12 +40,15 @@ const Item = () => {
 						unit_price: phone.price,
 						title: phone.title,
 						idProd: 1234,
-						desc: 'Dispositivo móvil de Tienda e-commerce',
-						// img: img.src,
+						description: 'Dispositivo móvil de Tienda e-commerce',
+						picture_url: current_domain
+							? 'https://' + current_domain + phone.srcPath
+							: '',
+						external_reference: 'brsmilanez@hotmail.com',
 						payer: {
 							name: 'Lalo',
 							surname: 'Landa',
-							email: 'test_user_63274575@testuser.com', ////EMAIL EXAMEN NOT FOUND
+							email: 'test_user_63274575@testuser.com',
 							// email: 'test_user_51992233@testuser.com',
 							phone: {
 								area_code: '11',
@@ -75,6 +79,7 @@ const Item = () => {
 							// elementsColor: '#8e44ad',
 						},
 						autoOpen: true,
+						auto_return: 'approved',
 					});
 
 					//esto es para limpiar el iframe que genera el script de mercado libre.
