@@ -7,9 +7,8 @@ import useScript from '../hooks/useScript';
 
 const Item = () => {
 	const { id } = useParams();
-	const pid = 'p' + id;
 	//@ts-ignore
-	const phone: any = DataPhones[pid];
+	const phone: any = DataPhones[id];
 
 	useScript('https://www.mercadopago.com/v2/security.js', {
 		view: 'item',
@@ -20,7 +19,8 @@ const Item = () => {
 
 	const handdlePagarMP = () => {
 		const PORT = 8080;
-		const APIURL = `http:///localhost:${PORT}/api/`;
+		// const APIURL = `http:///localhost:${PORT}/api/`;
+		const APIURL = `https://checkout-mp-react.herokuapp.com/`;
 		const PUBLIC_KEY = 'TEST-efcbcded-34c5-494c-9a53-fbaa41af4f41';
 		let mercadopago: any = null;
 		try {

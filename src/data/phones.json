@@ -1,47 +1,47 @@
 {
-    "p1": {
+    "a": {
         "title": "iPhone 8 Pro",
         "price": 150,
         "quantity": 1,
         "srcPath": "/static/img/phones/iphone8.png"
     },
-    "p2": {
+    "b": {
         "title": "Lg G6",
         "price": 100,
         "quantity": 1,
         "srcPath": "/static/img/phones/lgg6.jpg"
     },
-    "p3": {
+    "c": {
         "title": "Moto G4",
         "price": 80,
         "quantity": 1,
         "srcPath": "/static/img/phones/motog4.jpg"
     },
-    "p4": {
+    "d": {
         "title": "Sony Xperia X100",
         "price": 180,
         "quantity": 1,
         "srcPath": "/static/img/phones/xperia.jpg"
     },
-    "p5": {
+    "e": {
         "title": "Moto G5",
         "price": 90,
         "quantity": 1,
         "srcPath": "/static/img/phones/motog5.jpg"
     },
-    "p6": {
+    "f": {
         "title": "Galaxy S9",
         "price": 126,
         "quantity": 1,
         "srcPath": "/static/img/phones/galaxys9.jpg"
     },
-    "p7": {
+    "g": {
         "title": "Huawei p30 lite",
         "price": 111,
         "quantity": 1,
         "srcPath": "/static/img/phones/p30.jpg"
     },
-    "p8": {
+    "h": {
         "title": "Galaxy j5",
         "price": 50,
         "quantity": 1,
