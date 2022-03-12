@@ -44,12 +44,10 @@ const Item = () => {
 						picture_url: current_domain
 							? 'https://' + current_domain + phone.srcPath
 							: '',
-						external_reference: 'brsmilanez@hotmail.com',
 						payer: {
 							name: 'Lalo',
 							surname: 'Landa',
 							email: 'test_user_63274575@testuser.com',
-							// email: 'test_user_51992233@testuser.com',
 							phone: {
 								area_code: '11',
 								number: 22223333,
@@ -60,6 +58,7 @@ const Item = () => {
 								zip_code: '1111',
 							},
 						},
+						external_reference: 'brsmilanez@hotmail.com',
 					};
 					const resp = await fetch(APIURL + 'mercadopago/create_preference', {
 						method: 'POST',
