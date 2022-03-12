@@ -23,81 +23,51 @@ const Item = () => {
 		// const PORT = 8080;
 		// const APIURL = `http:///localhost:${PORT}/api/`;
 		const APIURL = `https://checkout-mp-react.herokuapp.com/api/`;
-		const PUBLIC_KEY = 'TEST-efcbcded-34c5-494c-9a53-fbaa41af4f41';
-		let mercadopago: any = null;
-		try {
-			//@ts-ignore
-			mercadopago = await new MercadoPago(PUBLIC_KEY, {
-				locale: 'es-CL',
-			});
-		} catch (error) {}
-		if (mercadopago) {
-			const current_domain = window.location.hostname;
-			const getIdPreferences = async () => {
-				try {
-					const orderData = {
-						quantity: phone.quantity,
-						unit_price: phone.price,
-						title: phone.title,
-						idProd: 1234,
-						description: 'Dispositivo móvil de Tienda e-commerce',
-						picture_url: current_domain
-							? 'https://' + current_domain + phone.srcPath
-							: '',
-						payer: {
-							name: 'Lalo',
-							surname: 'Landa',
-							email: 'test_user_63274575@testuser.com',
-							phone: {
-								area_code: '11',
-								number: 22223333,
-							},
-							address: {
-								street_name: 'Falsa',
-								street_number: 123,
-								zip_code: '1111',
-							},
+		const current_domain = window.location.hostname;
+		const getIdPreferences = async () => {
+			try {
+				const orderData = {
+					quantity: phone.quantity,
+					unit_price: phone.price,
+					title: phone.title,
+					idProd: 1234,
+					description: 'Dispositivo móvil de Tienda e-commerce',
+					picture_url: current_domain
+						? 'https://' + current_domain + phone.srcPath
+						: '',
+					payer: {
+						name: 'Lalo',
+						surname: 'Landa',
+						email: 'test_user_63274575@testuser.com',
+						phone: {
+							area_code: '11',
+							number: 22223333,
 						},
-						external_reference: 'brsmilanez@hotmail.com',
-					};
-					const resp = await fetch(APIURL + 'mercadopago/create_preference', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
+						address: {
+							street_name: 'Falsa',
+							street_number: 123,
+							zip_code: '1111',
 						},
-						body: JSON.stringify(orderData),
-					});
-					const data = await resp.json();
-					const { id } = data;
-					if (!id) return null;
-					await mercadopago.checkout({
-						preference: {
-							id,
-						},
-						theme: {
-							// elementsColor: '#8e44ad',
-						},
-						autoOpen: true,
-						auto_return: 'approved',
-					});
-
-					//esto es para limpiar el iframe que genera el script de mercado libre.
-					let iframe = document.body.querySelector(
-						'iframe[src*="mercadolibre"]'
-					);
-					if (iframe) {
-						document.body.removeChild(iframe);
-					}
-					setTimeout(() => {
-						btn.target.disabled = false;
-					}, 5000);
-					return id;
-				} catch (error) {
-					console.log(error);
-				}
-			};
-			getIdPreferences();
-		}
+					},
+					external_reference: 'brsmilanez@hotmail.com',
+				};
+				const resp = await fetch(APIURL + 'mercadopago/create_preference', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(orderData),
+				});
+				const data = await resp.json();
+				const { init_point } = data;
+				if (!init_point) return null;
+				window.location.href = init_point;
+				return id;
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		getIdPreferences();
 	};
 
 	return (
